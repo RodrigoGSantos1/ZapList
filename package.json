@@ -13,6 +13,9 @@
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
+    "@react-navigation/bottom-tabs": "^7.4.9",
+    "@react-navigation/native": "^7.1.18",
+    "@react-navigation/stack": "^7.4.10",
     "expo": "^54.0.0",
     "expo-status-bar": "~3.0.8",
     "nativewind": "latest",
@@ -21,6 +24,7 @@
     "react-native-appearance": "^0.3.4",
     "react-native-reanimated": "~4.1.1",
     "react-native-safe-area-context": "~5.6.0",
+    "react-native-screens": "~4.16.0",
     "react-native-worklets": "0.5.1"
   },
   "devDependencies": {
