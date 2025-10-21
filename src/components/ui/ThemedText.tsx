@@ -1,6 +1,6 @@
 import React from 'react';
 import { Text, TextProps } from 'react-native';
-import { useThemeClasses } from '../hooks/useThemeClasses';
+import { useThemeClasses } from '../../hooks/useThemeClasses';
 
 interface ThemedTextProps extends TextProps {
   variant?: 'primary' | 'secondary' | 'muted';

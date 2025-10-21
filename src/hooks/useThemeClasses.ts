@@ -42,11 +42,18 @@ export const useThemeClasses = () => {
     };
   };
 
+  const getInputClasses = () => {
+    return isDark
+      ? 'bg-tertiary-dark text-tertiary-dark-foreground border-muted-dark rounded-xl px-4 py-3 border'
+      : 'bg-tertiary text-tertiary-foreground border-muted rounded-xl px-4 py-3 border';
+  };
+
   return {
     isDark,
     getBackgroundClasses,
     getTextClasses,
     getButtonClasses,
     getNavigationColors,
+    getInputClasses,
   };
 };

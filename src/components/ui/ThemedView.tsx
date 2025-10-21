@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, ViewProps } from 'react-native';
-import { useThemeClasses } from '../hooks/useThemeClasses';
+import { useThemeClasses } from '../../hooks/useThemeClasses';
 
 interface ThemedViewProps extends ViewProps {
   variant?: 'primary' | 'secondary' | 'tertiary' | 'muted';
