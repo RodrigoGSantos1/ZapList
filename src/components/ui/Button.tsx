@@ -24,11 +24,14 @@ export const Button: React.FC<ButtonProps> = ({
     lg: 'px-6 py-4',
   };
 
+  const hasCustomBackground = className.includes('bg-');
+  const baseClasses = hasCustomBackground
+    ? `rounded-xl ${sizeClasses[size]}`
+    : `${getButtonClasses(variant)} ${sizeClasses[size]}`;
+
   return (
-    <TouchableOpacity
-      className={`${getButtonClasses(variant)} ${sizeClasses[size]} ${className}`}
-      {...props}>
-      <ThemedText variant="primary" className="text-center font-semibold">
+    <TouchableOpacity className={`${baseClasses} ${className}`} {...props}>
+      <ThemedText variant='primary' className='text-center font-semibold'>
         {children}
       </ThemedText>
     </TouchableOpacity>

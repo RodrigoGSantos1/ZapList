@@ -31,26 +31,31 @@ export default function TabNavigator() {
           backgroundColor: colors.headerBackground,
         },
         headerTintColor: colors.headerTint,
-      }}>
+      }}
+    >
       <Tab.Screen
-        name="TaskList"
+        name='TaskList'
         component={TaskListScreen}
         options={{
           tabBarIcon: ({ focused }) => (
-            <View className=" items-center justify-center rounded-full">
+            <View className=' items-center justify-center rounded-full'>
               <Entypo
-                name="home"
+                name='home'
                 size={focused ? 30 : 24}
-                color={focused ? '#FFFFFF' : colors.tabBarInactiveTint}
+                color={
+                  focused ? colors.tabBarActiveTint : colors.tabBarInactiveTint
+                }
               />
-              {focused && <View className="bg-accent-orange mt-1 h-1 w-1 rounded-full" />}
+              {focused && (
+                <View className='bg-accent-orange mt-1 h-1 w-1 rounded-full' />
+              )}
             </View>
           ),
           title: '',
         }}
       />
       <Tab.Screen
-        name="CreateTask"
+        name='CreateTask'
         component={CreateTaskScreen}
         options={{
           tabBarIcon: ({ focused }) => (
@@ -63,25 +68,30 @@ export default function TabNavigator() {
                 alignItems: 'center',
                 justifyContent: 'center',
                 transform: [{ scale: focused ? 1.2 : 1 }],
-              }}>
-              <AntDesign name="plus" size={24} color="#FFFFFF" />
+              }}
+            >
+              <AntDesign name='plus' size={24} color='#FFFFFF' />
             </LinearGradient>
           ),
           title: '',
         }}
       />
       <Tab.Screen
-        name="Settings"
+        name='Settings'
         component={SettingsScreen}
         options={{
           tabBarIcon: ({ focused }) => (
-            <View className=" items-center justify-center rounded-full">
+            <View className=' items-center justify-center rounded-full'>
               <Ionicons
-                name="settings"
+                name='settings'
                 size={focused ? 30 : 24}
-                color={focused ? '#FFFFFF' : colors.tabBarInactiveTint}
+                color={
+                  focused ? colors.tabBarActiveTint : colors.tabBarInactiveTint
+                }
               />
-              {focused && <View className="bg-accent-orange mt-1 h-1 w-1 rounded-full" />}
+              {focused && (
+                <View className='bg-accent-orange mt-1 h-1 w-1 rounded-full' />
+              )}
             </View>
           ),
           title: '',

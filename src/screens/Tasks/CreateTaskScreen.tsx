@@ -3,7 +3,7 @@ import { ThemedScrollView } from '../../components/ui/ThemedScrollView';
 import { FormField } from '../../components/forms/FormField';
 import { Input } from '../../components/ui/Input';
 import { Button } from '../../components/ui/Button';
-import { View, Alert } from 'react-native';
+import { View, Alert, ActivityIndicator } from 'react-native';
 import { ThemedText, ThemedView } from '../../components/ui';
 import { useTasks } from '../../contexts/TaskContext';
 import { ImagePickerComponent } from '../../components/ImagePicker';
@@ -17,11 +17,16 @@ export function CreateTaskScreen() {
     imageUri: '',
   });
   const [loading, setLoading] = useState(false);
-  const [resetKey, setResetKey] = useState(0);
+  const [hasImage, setHasImage] = useState(false);
 
   const handleSubmit = async () => {
     if (!formData.title.trim()) {
       Alert.alert('Erro', 'O título da tarefa é obrigatório');
+      return;
+    }
+
+    if (formData.title.trim().length < 3) {
+      Alert.alert('Erro', 'O título deve ter pelo menos 3 caracteres');
       return;
     }
 
@@ -35,16 +40,21 @@ export function CreateTaskScreen() {
         completed: false,
         imageUri: '',
       });
+      setHasImage(false);
 
-      setResetKey(prev => prev + 1);
-
-      Alert.alert('Sucesso', 'Tarefa criada com sucesso!');
+      Alert.alert('Sucesso', 'Tarefa criada com sucesso!', [{ text: 'OK' }]);
     } catch (error) {
-      console.error('Erro ao criar tarefa:', error);
-      Alert.alert('Erro', 'Não foi possível criar a tarefa');
+      Alert.alert('Erro', 'Não foi possível criar a tarefa. Tente novamente.', [
+        { text: 'OK' },
+      ]);
     } finally {
       setLoading(false);
     }
+  };
+
+  const handleImageSelected = (imageUri: string) => {
+    setFormData({ ...formData, imageUri });
+    setHasImage(!!imageUri);
   };
 
   return (
@@ -65,7 +75,11 @@ export function CreateTaskScreen() {
               placeholder='Digite o título da tarefa'
               value={formData.title}
               onChangeText={text => setFormData({ ...formData, title: text })}
+              maxLength={100}
             />
+            <ThemedText variant='muted' className='mt-1 text-xs'>
+              {formData.title.length}/100 caracteres
+            </ThemedText>
           </FormField>
 
           <FormField label='Descrição'>
@@ -77,13 +91,16 @@ export function CreateTaskScreen() {
               }
               multiline
               numberOfLines={4}
+              maxLength={500}
             />
+            <ThemedText variant='muted' className='mt-1 text-xs'>
+              {formData.description.length}/500 caracteres
+            </ThemedText>
           </FormField>
 
           <ImagePickerComponent
-            onImageSelected={imageUri => setFormData({ ...formData, imageUri })}
+            onImageSelected={handleImageSelected}
             currentImage={formData.imageUri}
-            resetKey={resetKey}
           />
         </View>
 
@@ -93,9 +110,24 @@ export function CreateTaskScreen() {
             size='lg'
             className='bg-accent-blue w-full'
             onPress={handleSubmit}
-            disabled={loading}
+            disabled={loading || !formData.title.trim()}
           >
-            {loading ? 'Criando...' : 'Criar Tarefa'}
+            {loading ? (
+              <View className='flex-row items-center'>
+                <ActivityIndicator
+                  size='small'
+                  color='white'
+                  className='mr-2'
+                />
+                <ThemedText variant='primary' className='text-white'>
+                  Criando...
+                </ThemedText>
+              </View>
+            ) : (
+              <ThemedText variant='primary' className='text-white'>
+                Criar Tarefa{hasImage ? ' com Imagem' : ''}
+              </ThemedText>
+            )}
           </Button>
         </View>
       </ThemedView>
