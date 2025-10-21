@@ -31,10 +31,22 @@ export const useThemeClasses = () => {
     return `${baseClasses[variant]} rounded-xl px-4 py-3`;
   };
 
+  const getNavigationColors = () => {
+    return {
+      headerBackground: isDark ? '#1A1A2E' : '#FFFFFF',
+      headerTint: isDark ? '#FFFFFF' : '#1A1A2E',
+      tabBarBackground: isDark ? '#1A1A2E' : '#FFFFFF',
+      tabBarActiveTint: isDark ? '#FFFFFF' : '#1A1A2E',
+      tabBarInactiveTint: isDark ? '#8A8A9A' : '#718096',
+      borderColor: isDark ? '#3A3A5C' : '#E9ECEF',
+    };
+  };
+
   return {
     isDark,
     getBackgroundClasses,
     getTextClasses,
     getButtonClasses,
+    getNavigationColors,
   };
 };
