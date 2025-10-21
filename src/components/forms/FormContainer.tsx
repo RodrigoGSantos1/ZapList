@@ -1,5 +1,4 @@
 import React from 'react';
-import { View } from 'react-native';
 import { ThemedView } from '../ui/ThemedView';
 
 interface FormContainerProps {

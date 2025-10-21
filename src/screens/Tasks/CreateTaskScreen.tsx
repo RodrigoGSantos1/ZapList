@@ -3,21 +3,42 @@ import { ThemedScrollView } from '../../components/ui/ThemedScrollView';
 import { FormField } from '../../components/forms/FormField';
 import { Input } from '../../components/ui/Input';
 import { Button } from '../../components/ui/Button';
-import { View } from 'react-native';
+import { View, Alert } from 'react-native';
 import { ThemedText, ThemedView } from '../../components/ui';
-import { Task } from '../../types';
+import { useTasks } from '../../contexts/TaskContext';
 
 export function CreateTaskScreen() {
+  const { createTask } = useTasks();
   const [formData, setFormData] = useState({
-    id: '',
     title: '',
     description: '',
     completed: false,
-    imageUri: '',
-    latitude: 0,
-    longitude: 0,
-    createdAt: new Date(),
-  } as Task);
+  });
+  const [loading, setLoading] = useState(false);
+
+  const handleSubmit = async () => {
+    if (!formData.title.trim()) {
+      Alert.alert('Erro', 'O título da tarefa é obrigatório');
+      return;
+    }
+
+    try {
+      setLoading(true);
+      await createTask(formData);
+
+      setFormData({
+        title: '',
+        description: '',
+        completed: false,
+      });
+
+      Alert.alert('Sucesso', 'Tarefa criada com sucesso!');
+    } catch (error) {
+      Alert.alert('Erro', 'Não foi possível criar a tarefa');
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <ThemedScrollView variant="primary" className="flex-1">
@@ -52,8 +73,13 @@ export function CreateTaskScreen() {
         </View>
 
         <View className="mt-8">
-          <Button variant="primary" size="lg" className="bg-accent-blue w-full">
-            Criar Tarefa
+          <Button
+            variant="primary"
+            size="lg"
+            className="bg-accent-blue w-full"
+            onPress={handleSubmit}
+            disabled={loading}>
+            {loading ? 'Criando...' : 'Criar Tarefa'}
           </Button>
         </View>
       </ThemedView>

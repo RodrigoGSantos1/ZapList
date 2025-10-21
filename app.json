@@ -3,22 +3,35 @@
     "name": "ZapList",
     "slug": "ZapList",
     "version": "1.0.0",
-
     "web": {
       "favicon": "./assets/favicon.png"
     },
-
     "experiments": {
       "tsconfigPaths": true
     },
-
-    "plugins": [],
-
+    "plugins": [
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "O app precisa acessar suas fotos para anexar imagens às tarefas."
+        }
+      ],
+      [
+        "expo-camera",
+        {
+          "cameraPermission": "O app precisa acessar a câmera para capturar fotos das tarefas."
+        }
+      ],
+      [
+        "expo-location",
+        {
+          "locationAlwaysAndWhenInUsePermission": "O app precisa acessar sua localização para anexar coordenadas às tarefas."
+        }
+      ]
+    ],
     "orientation": "portrait",
     "icon": "./assets/icon.png",
-
     "userInterfaceStyle": "light",
-
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
