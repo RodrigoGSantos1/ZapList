@@ -10,19 +10,16 @@ import { useThemeClasses } from '../hooks/useThemeClasses';
 const Stack = createStackNavigator();
 
 export default function AppNavigator() {
-  const { getThemeClasses } = useThemeClasses();
+  const { getBackgroundClasses, getTextClasses } = useThemeClasses();
 
   return (
     <NavigationContainer>
       <Stack.Navigator
         screenOptions={{
           headerStyle: {
-            backgroundColor: getThemeClasses('bg-primary', 'bg-primary-dark'),
+            backgroundColor: getBackgroundClasses('primary'),
           },
-          headerTintColor: getThemeClasses(
-            'text-primary-foreground',
-            'text-primary-dark-foreground'
-          ),
+          headerTintColor: getTextClasses('primary'),
         }}>
         <Stack.Screen name="MainTabs" component={TabNavigator} options={{ headerShown: false }} />
         <Stack.Screen

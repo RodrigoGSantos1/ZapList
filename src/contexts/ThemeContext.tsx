@@ -1,5 +1,5 @@
-import React, { createContext, useContext, useState, useEffect, useMemo } from 'react';
-import { Appearance } from 'react-native';
+import React, { createContext, useContext, useState, useEffect } from 'react';
+import { useColorScheme } from 'react-native';
 
 type Theme = 'light' | 'dark' | 'system';
 
@@ -14,39 +14,20 @@ const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export const useTheme = () => {
   const context = useContext(ThemeContext);
-  if (!context) {
-    throw new Error('useTheme must be used within a ThemeProvider');
-  }
+  if (!context) throw new Error('useTheme must be used within a ThemeProvider');
   return context;
 };
 
-interface ThemeProviderProps {
-  children: React.ReactNode;
-}
-
-export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
+export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  const systemColorScheme = useColorScheme();
   const [theme, setTheme] = useState<Theme>('system');
+  const isDark = theme === 'dark' || (theme === 'system' && systemColorScheme === 'dark');
 
-  const isDark = theme === 'dark' || (theme === 'system' && Appearance.getColorScheme() === 'dark');
+  const toggleTheme = () => setTheme((prev) => (prev === 'light' ? 'dark' : 'light'));
 
-  const toggleTheme = () => {
-    setTheme((prev) => (prev === 'light' ? 'dark' : 'light'));
-  };
-
-  useEffect(() => {
-    const subscription = Appearance.addChangeListener(({ colorScheme }) => {
-      if (theme === 'system') {
-        setTheme(colorScheme === 'dark' ? 'dark' : 'light');
-      }
-    });
-
-    return () => subscription?.remove();
-  }, [theme]);
-
-  const contextValue = useMemo(
-    () => ({ theme, isDark, setTheme, toggleTheme }),
-    [theme, isDark, setTheme, toggleTheme]
+  return (
+    <ThemeContext.Provider value={{ theme, isDark, setTheme, toggleTheme }}>
+      {children}
+    </ThemeContext.Provider>
   );
-
-  return <ThemeContext.Provider value={contextValue}>{children}</ThemeContext.Provider>;
 };

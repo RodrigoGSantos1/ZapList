@@ -1,67 +1,43 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { TaskListScreen } from '../screens/Tasks/TaskListScreen';
-import { SettingsScreen } from '../screens/Settings/SettingsScreen';
 import { useThemeClasses } from '../hooks/useThemeClasses';
+import { Text } from 'react-native';
 import Entypo from '@expo/vector-icons/Entypo';
-import AntDesign from '@expo/vector-icons/AntDesign';
-import Ionicons from '@expo/vector-icons/Ionicons';
-import { CreateTaskScreen } from '../screens';
 
 const Tab = createBottomTabNavigator();
 
 export default function TabNavigator() {
-  const { getThemeClasses } = useThemeClasses();
+  const { getBackgroundClasses, getTextClasses } = useThemeClasses();
 
   return (
     <Tab.Navigator
       screenOptions={{
         tabBarStyle: {
-          backgroundColor: getThemeClasses('bg-primary', 'bg-primary-dark'),
-          borderTopColor: getThemeClasses('border-gray-200', 'border-gray-700'),
+          backgroundColor: getBackgroundClasses('primary'),
+          borderTopColor: getTextClasses('muted'),
         },
-        tabBarActiveTintColor: getThemeClasses('text-primary', 'text-primary-dark'),
-        tabBarInactiveTintColor: getThemeClasses(
-          'text-muted-foreground',
-          'text-muted-dark-foreground'
-        ),
+        tabBarActiveTintColor: getTextClasses('primary'),
+        tabBarInactiveTintColor: getTextClasses('muted'),
         headerStyle: {
-          backgroundColor: getThemeClasses('bg-primary', 'bg-primary-dark'),
+          backgroundColor: getBackgroundClasses('primary'),
         },
-        headerTintColor: getThemeClasses('text-primary-foreground', 'text-primary-dark-foreground'),
+        headerTintColor: getTextClasses('primary'),
       }}>
       <Tab.Screen
         name="TaskList"
         component={TaskListScreen}
         options={{
-          tabBarIcon: ({ focused }) => (
-            <Entypo
-              name="home"
-              size={24}
-              color={
-                focused
-                  ? getThemeClasses('text-primary', 'text-primary-dark') // ativo
-                  : getThemeClasses('text-gray-400', 'text-gray-600') // inativo
-              }
-            />
-          ),
-          title: '',
+          tabBarIcon: () => <Entypo name="home" size={24} color={getTextClasses('primary')} />,
+          title: 'Início',
         }}
       />
       <Tab.Screen
-        name="CreateTask"
-        component={CreateTaskScreen}
+        name="Tasks"
+        component={TaskListScreen}
         options={{
-          tabBarIcon: () => <AntDesign name="plus" size={24} color="black" />,
-          title: '',
-        }}
-      />
-      <Tab.Screen
-        name="Settings"
-        component={SettingsScreen}
-        options={{
-          tabBarIcon: () => <Ionicons name="settings-outline" size={24} color="black" />,
-          title: '',
+          title: 'Tarefas',
+          tabBarIcon: ({ color, size }) => <Text style={{ color, fontSize: size }}>📋</Text>,
         }}
       />
     </Tab.Navigator>

@@ -1,10 +1,12 @@
 import { Text, View } from 'react-native';
 import { ThemeToggle } from '../../components/ThemeToggle';
+import { useThemeClasses } from '../../hooks/useThemeClasses';
 
 export function TaskListScreen() {
+  const { getBackgroundClasses, getTextClasses } = useThemeClasses();
   return (
-    <View className="flex-1 items-center justify-center">
-      <Text className="text-2xl font-bold">Task List</Text>
+    <View className={`${getBackgroundClasses('primary')} flex-1 items-center justify-center`}>
+      <Text className={getTextClasses('primary')}>Task List</Text>
       <ThemeToggle />
     </View>
   );
