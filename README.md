@@ -165,7 +165,7 @@ Tela de configurações com opções de tema (claro/escuro), gerenciamento de da
 
 A persistência foi implementada usando uma arquitetura em camadas:
 
-````
+```
 ┌──────────────────┐
 │   Components     │ ← Interface do usuário
 ├──────────────────┤
@@ -371,4 +371,3 @@ navigation.navigate('TaskDetail', { taskId: task.id });
 ---
 
 **Desenvolvido com usando React Native, Expo e TypeScript**
-````
