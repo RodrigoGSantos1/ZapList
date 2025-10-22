@@ -55,13 +55,19 @@ npm run ios
 ## 🎥 Demonstração em Vídeo
 
 <div align="center">
-  <video width="300" controls poster="URL_DA_THUMBNAIL.jpg">
-    <source src="https://imgur.com/gallery/zaplist-mp4-86GxsXl#rGN70Wm.mp4" type="video/mp4">
-    <p>Seu navegador não suporta vídeos HTML5. <a href="https://imgur.com/gallery/zaplist-mp4-86GxsXl#rGN70Wm.mp4">Baixe o vídeo aqui</a>.</p>
-  </video>
+  
+https://imgur.com/gallery/zaplist-mp4-86GxsXl
+
 </div>
 
-_Demonstração completa das funcionalidades do ZapList_
+**Funcionalidades demonstradas:**
+
+- ✅ Criação de tarefas com foto e localização
+- ✅ Navegação entre telas
+- ✅ Swipe para ações rápidas
+- ✅ Filtros de tarefas
+- ✅ Tema claro/escuro
+- ✅ Configurações e limpeza de dados
 
 ## 📸 Screenshots do Aplicativo
 
