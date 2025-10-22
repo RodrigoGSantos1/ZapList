@@ -53,7 +53,7 @@ export function TaskProvider({ children }: TaskProviderProps) {
     try {
       const newTask: Task = {
         ...taskData,
-        id: Date.now().toString(),
+        id: crypto.randomUUID(),
         createdAt: new Date(),
         updatedAt: new Date(),
       };
