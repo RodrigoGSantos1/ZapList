@@ -6,6 +6,7 @@ import { useTasks } from '../../contexts/TaskContext';
 import { Task } from '../../types/task';
 import { Button } from '../../components/ui/Button';
 import { useNavigation } from '@react-navigation/native';
+import { ThemeToggle } from '../../components/ThemeToggle';
 
 type TaskFilter = 'all' | 'active' | 'completed';
 
@@ -124,11 +125,14 @@ export function TaskListScreen() {
   return (
     <ThemedView variant='primary' className='flex-1'>
       <View className='p-4'>
-        <ThemedText variant='primary' className='mb-4 text-2xl font-bold'>
-          Minhas Tarefas
-        </ThemedText>
+        <View className='flex-row items-center justify-between mb-6'>
+          <ThemedText variant='primary' className='mb-4 text-2xl font-bold'>
+            Minhas Tarefas
+          </ThemedText>
+          <ThemeToggle />
+        </View>
 
-        <View className='mb-4 flex-row space-x-2'>
+        <View className='mb-4 flex-row gap-x-2'>
           <Button
             variant={filter === 'all' ? 'primary' : 'secondary'}
             size='sm'

@@ -6,13 +6,24 @@ import { ThemedText } from './ui/ThemedText';
 import { MaterialIcons } from '@expo/vector-icons';
 
 export const ThemeToggle: React.FC = () => {
-  const { isDark, toggleTheme } = useTheme();
+  const { isDark, toggleTheme, loading } = useTheme();
   const { getButtonClasses } = useThemeClasses();
+
+  if (loading) {
+    return (
+      <View className='flex-row items-center'>
+        <ThemedText variant='muted' className='text-sm'>
+          Carregando...
+        </ThemedText>
+      </View>
+    );
+  }
 
   return (
     <TouchableOpacity
       onPress={toggleTheme}
       className={getButtonClasses('tertiary')}
+      disabled={loading}
     >
       <View className='flex-row items-center'>
         <MaterialIcons
