@@ -7,6 +7,7 @@ import React, {
 } from 'react';
 import { Task } from '../types/task';
 import { TaskStorageService } from '../services/TaskStorageService';
+import * as Crypto from 'expo-crypto';
 
 interface TaskContextData {
   tasks: Task[];
@@ -53,7 +54,7 @@ export function TaskProvider({ children }: TaskProviderProps) {
     try {
       const newTask: Task = {
         ...taskData,
-        id: crypto.randomUUID(),
+        id: Crypto.randomUUID(),
         createdAt: new Date(),
         updatedAt: new Date(),
       };

@@ -1,5 +1,13 @@
 # 📱 ZapList - App de Lista de Tarefas
 
+[![React Native](https://img.shields.io/badge/React%20Native-0.81.4-blue?style=for-the-badge&logo=react)](https://reactnative.dev/)
+[![Expo](https://img.shields.io/badge/Expo-54.0.0-000020?style=for-the-badge&logo=expo)](https://expo.dev/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.9.2-blue?style=for-the-badge&logo=typescript)](https://www.typescriptlang.org/)
+[![NativeWind](https://img.shields.io/badge/NativeWind-3.4.0-06B6D4?style=for-the-badge&logo=tailwindcss)](https://www.nativewind.dev/)
+
+[![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](LICENSE)
+[![Status](https://img.shields.io/badge/Status-Em%20Desenvolvimento-yellow?style=for-the-badge)](https://github.com/seu-usuario/ZapList)
+
 Um aplicativo React Native moderno para gerenciamento de tarefas com recursos nativos como captura de fotos e localização GPS. Desenvolvido com Expo, TypeScript e NativeWind para uma experiência de usuário fluida e responsiva.
 
 ## 🚀 Como Instalar e Rodar o Projeto
@@ -43,6 +51,53 @@ npm run ios
 
 - Escaneie o QR code com o Expo Go (Android/iOS)
 - Ou use um emulador Android/iOS
+
+## 📸 Screenshots do Aplicativo
+
+Aqui estão as principais telas do ZapList em ação, demonstrando todas as funcionalidades implementadas:
+
+### **📋 Lista de Tarefas**
+
+Interface principal com lista de tarefas, filtros e navegação intuitiva. Mostra as tarefas com imagens, localização e status visual.
+
+![Lista de Tarefas](https://i.imgur.com/0CxKM8E_d.webp?maxwidth=760&fidelity=grand)
+
+### **➕ Nova Tarefa**
+
+Tela para criação de novas tarefas com campos de título, descrição, captura de fotos e localização GPS.
+
+![Nova Tarefa](https://i.imgur.com/EzUuGIN_d.webp?maxwidth=760&fidelity=grand)
+
+### **✏️ Editar Tarefa**
+
+Interface de edição com todos os campos preenchidos, permitindo alterar título, descrição, foto e localização.
+
+![Editar Tarefa](https://i.imgur.com/hU9pQjH_d.webp?maxwidth=760&fidelity=grand)
+
+### **👁️ Detalhes da Tarefa**
+
+Visualização completa da tarefa com foto anexada, coordenadas GPS e informações detalhadas.
+
+![Detalhes da Tarefa](https://i.imgur.com/CHkiKMy_d.webp?maxwidth=760&fidelity=grand)
+
+### **⚙️ Configurações**
+
+Tela de configurações com opções de tema (claro/escuro), gerenciamento de dados e informações do app.
+
+![Configurações](https://i.imgur.com/TO34ctC_d.webp?maxwidth=760&fidelity=grand)
+
+## 🎯 Demonstração Visual
+
+<div align="center">
+  <img src="https://i.imgur.com/0CxKM8E_d.webp?maxwidth=760&fidelity=grand" width="200" alt="Lista de Tarefas" />
+  <img src="https://i.imgur.com/EzUuGIN_d.webp?maxwidth=760&fidelity=grand" width="200" alt="Nova Tarefa" />
+  <img src="https://i.imgur.com/hU9pQjH_d.webp?maxwidth=760&fidelity=grand" width="200" alt="Editar Tarefa" />
+</div>
+
+<div align="center">
+  <img src="https://i.imgur.com/CHkiKMy_d.webp?maxwidth=760&fidelity=grand" width="200" alt="Detalhes da Tarefa" />
+  <img src="https://i.imgur.com/TO34ctC_d.webp?maxwidth=760&fidelity=grand" width="200" alt="Configurações" />
+</div>
 
 ## 🛠️ Tecnologias e Bibliotecas Escolhidas
 
