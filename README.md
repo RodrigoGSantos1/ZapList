@@ -165,16 +165,16 @@ Tela de configurações com opções de tema (claro/escuro), gerenciamento de da
 
 A persistência foi implementada usando uma arquitetura em camadas:
 
-```
-┌─────────────────┐
-│   Components    │ ← Interface do usuário
-├─────────────────┤
-│   TaskContext   │ ← Gerenciamento de estado global
-├─────────────────┤
-│ TaskStorageService│ ← Camada de abstração para persistência
-├─────────────────┤
-│   AsyncStorage  │ ← Armazenamento local do dispositivo
-└─────────────────┘
+````
+┌──────────────────┐
+│   Components     │ ← Interface do usuário
+├──────────────────┤
+│   TaskContext    │ ← Gerenciamento de estado global
+├──────────────────┤
+│TaskStorageService│ ← Camada de abstração para persistência
+├──────────────────┤
+│   AsyncStorage   │ ← Armazenamento local do dispositivo
+└──────────────────┘
 ```
 
 ### **TaskStorageService - Camada de Persistência**
@@ -379,3 +379,4 @@ navigation.navigate('TaskDetail', { taskId: task.id });
 ---
 
 **Desenvolvido com usando React Native, Expo e TypeScript**
+````
