@@ -5,6 +5,7 @@ import { ThemedText, ThemedView } from '../../components/ui';
 import { useTasks } from '../../contexts/TaskContext';
 import { Task } from '../../types/task';
 import { Button } from '../../components/ui/Button';
+import { useNavigation } from '@react-navigation/native';
 
 type TaskFilter = 'all' | 'active' | 'completed';
 
@@ -12,6 +13,8 @@ export function TaskListScreen() {
   const { tasks, loading, deleteTask, toggleTaskComplete, getTasksByFilter } =
     useTasks();
   const [filter, setFilter] = useState<TaskFilter>('all');
+
+  const navigation = useNavigation();
 
   const filteredTasks = getTasksByFilter(filter);
 
@@ -77,11 +80,24 @@ export function TaskListScreen() {
         <Button
           variant='secondary'
           size='sm'
+          onPress={() => {
+            // @ts-ignore
+            navigation.navigate('TaskDetail', { taskId: item.id });
+          }}
+          className='bg-blue-500'
+        >
+          Ver Detalhes
+        </Button>
+
+        <Button
+          variant='secondary'
+          size='sm'
           onPress={() => toggleTaskComplete(item.id)}
           className={item.completed ? 'bg-green-500' : 'bg-blue-500'}
         >
           {item.completed ? 'Concluída' : 'Pendente'}
         </Button>
+
         <Button
           variant='secondary'
           size='sm'

@@ -21,20 +21,29 @@ export default function AppNavigator() {
             backgroundColor: colors.headerBackground,
           },
           headerTintColor: colors.headerTint,
-        }}>
-        <Stack.Screen name="MainTabs" component={TabNavigator} options={{ headerShown: false }} />
+          headerBackTitle: 'Voltar',
+        }}
+      >
         <Stack.Screen
-          name="TaskDetail"
+          name='MainTabs'
+          component={TabNavigator}
+          options={{
+            headerShown: false,
+            title: 'Listagem de Tarefas',
+          }}
+        />
+        <Stack.Screen
+          name='TaskDetail'
           component={TaskDetailScreen}
           options={{ title: 'Detalhes da Tarefa' }}
         />
         <Stack.Screen
-          name="CreateTask"
+          name='CreateTask'
           component={CreateTaskScreen}
           options={{ title: 'Nova Tarefa' }}
         />
         <Stack.Screen
-          name="EditTask"
+          name='EditTask'
           component={EditTaskScreen}
           options={{ title: 'Editar Tarefa' }}
         />

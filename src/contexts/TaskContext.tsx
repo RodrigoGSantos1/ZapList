@@ -1,15 +1,24 @@
-import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
+import React, {
+  createContext,
+  useContext,
+  useState,
+  useEffect,
+  ReactNode,
+} from 'react';
 import { Task } from '../types/task';
 import { TaskStorageService } from '../services/TaskStorageService';
 
 interface TaskContextData {
   tasks: Task[];
   loading: boolean;
-  createTask: (task: Omit<Task, 'id' | 'createdAt' | 'updatedAt'>) => Promise<void>;
+  createTask: (
+    task: Omit<Task, 'id' | 'createdAt' | 'updatedAt'>
+  ) => Promise<void>;
   updateTask: (task: Task) => Promise<void>;
   deleteTask: (taskId: string) => Promise<void>;
   toggleTaskComplete: (taskId: string) => Promise<void>;
   getTasksByFilter: (filter: 'all' | 'active' | 'completed') => Task[];
+  getTaskById: (taskId: string) => Task | undefined;
 }
 
 const TaskContext = createContext<TaskContextData>({} as TaskContextData);
@@ -38,7 +47,9 @@ export function TaskProvider({ children }: TaskProviderProps) {
     }
   };
 
-  const createTask = async (taskData: Omit<Task, 'id' | 'createdAt' | 'updatedAt'>) => {
+  const createTask = async (
+    taskData: Omit<Task, 'id' | 'createdAt' | 'updatedAt'>
+  ) => {
     try {
       const newTask: Task = {
         ...taskData,
@@ -48,7 +59,7 @@ export function TaskProvider({ children }: TaskProviderProps) {
       };
 
       await TaskStorageService.saveTask(newTask);
-      setTasks((prev) => [...prev, newTask]);
+      setTasks(prev => [...prev, newTask]);
     } catch (error) {
       console.error('Erro ao criar tarefa:', error);
       throw error;
@@ -58,7 +69,7 @@ export function TaskProvider({ children }: TaskProviderProps) {
   const updateTask = async (task: Task) => {
     try {
       await TaskStorageService.saveTask(task);
-      setTasks((prev) => prev.map((t) => (t.id === task.id ? task : t)));
+      setTasks(prev => prev.map(t => (t.id === task.id ? task : t)));
     } catch (error) {
       console.error('Erro ao atualizar tarefa:', error);
       throw error;
@@ -68,7 +79,7 @@ export function TaskProvider({ children }: TaskProviderProps) {
   const deleteTask = async (taskId: string) => {
     try {
       await TaskStorageService.deleteTask(taskId);
-      setTasks((prev) => prev.filter((t) => t.id !== taskId));
+      setTasks(prev => prev.filter(t => t.id !== taskId));
     } catch (error) {
       console.error('Erro ao deletar tarefa:', error);
       throw error;
@@ -77,7 +88,7 @@ export function TaskProvider({ children }: TaskProviderProps) {
 
   const toggleTaskComplete = async (taskId: string) => {
     try {
-      const task = tasks.find((t) => t.id === taskId);
+      const task = tasks.find(t => t.id === taskId);
       if (task) {
         const updatedTask = { ...task, completed: !task.completed };
         await updateTask(updatedTask);
@@ -91,12 +102,16 @@ export function TaskProvider({ children }: TaskProviderProps) {
   const getTasksByFilter = (filter: 'all' | 'active' | 'completed'): Task[] => {
     switch (filter) {
       case 'active':
-        return tasks.filter((task) => !task.completed);
+        return tasks.filter(task => !task.completed);
       case 'completed':
-        return tasks.filter((task) => task.completed);
+        return tasks.filter(task => task.completed);
       default:
         return tasks;
     }
+  };
+
+  const getTaskById = (taskId: string): Task | undefined => {
+    return tasks.find(task => task.id === taskId);
   };
 
   return (
@@ -109,7 +124,9 @@ export function TaskProvider({ children }: TaskProviderProps) {
         deleteTask,
         toggleTaskComplete,
         getTasksByFilter,
-      }}>
+        getTaskById,
+      }}
+    >
       {children}
     </TaskContext.Provider>
   );
