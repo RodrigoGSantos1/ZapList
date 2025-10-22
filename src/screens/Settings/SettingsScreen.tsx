@@ -4,9 +4,12 @@ import { ThemedText, ThemedView } from '../../components/ui';
 import { useTheme } from '../../contexts/ThemeContext';
 import { MaterialIcons, Ionicons } from '@expo/vector-icons';
 import { Button } from '../../components/ui/Button';
+import { TaskStorageService } from '../../services/TaskStorageService';
+import { useTasks } from '../../contexts/TaskContext';
 
 export function SettingsScreen() {
   const { theme, setTheme } = useTheme();
+  const { loadTasks } = useTasks();
 
   const handleClearData = () => {
     Alert.alert(
@@ -18,8 +21,17 @@ export function SettingsScreen() {
           text: 'Excluir',
           style: 'destructive',
           onPress: () => {
-            // Implementar limpeza de dados
-            Alert.alert('Sucesso', 'Todos os dados foram excluídos');
+            const clearData = async () => {
+              try {
+                await TaskStorageService.clearAllTasks();
+                await loadTasks();
+                Alert.alert('Sucesso', 'Todos os dados foram excluídos');
+              } catch (error) {
+                console.error('Erro ao limpar dados:', error);
+                Alert.alert('Erro', 'Não foi possível excluir os dados');
+              }
+            };
+            clearData();
           },
         },
       ]

@@ -3,6 +3,7 @@ import React, {
   useContext,
   useState,
   useEffect,
+  useMemo,
   ReactNode,
 } from 'react';
 import { Task } from '../types/task';
@@ -20,6 +21,7 @@ interface TaskContextData {
   toggleTaskComplete: (taskId: string) => Promise<void>;
   getTasksByFilter: (filter: 'all' | 'active' | 'completed') => Task[];
   getTaskById: (taskId: string) => Task | undefined;
+  loadTasks: () => Promise<void>;
 }
 
 const TaskContext = createContext<TaskContextData>({} as TaskContextData);
@@ -115,21 +117,23 @@ export function TaskProvider({ children }: TaskProviderProps) {
     return tasks.find(task => task.id === taskId);
   };
 
+  const contextValue = useMemo(
+    () => ({
+      tasks,
+      loading,
+      createTask,
+      updateTask,
+      deleteTask,
+      toggleTaskComplete,
+      getTasksByFilter,
+      getTaskById,
+      loadTasks,
+    }),
+    [tasks, loading]
+  );
+
   return (
-    <TaskContext.Provider
-      value={{
-        tasks,
-        loading,
-        createTask,
-        updateTask,
-        deleteTask,
-        toggleTaskComplete,
-        getTasksByFilter,
-        getTaskById,
-      }}
-    >
-      {children}
-    </TaskContext.Provider>
+    <TaskContext.Provider value={contextValue}>{children}</TaskContext.Provider>
   );
 }
 
