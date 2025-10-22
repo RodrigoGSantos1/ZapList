@@ -64,7 +64,6 @@ https://imgur.com/gallery/zaplist-mp4-86GxsXl
 
 - ✅ Criação de tarefas com foto e localização
 - ✅ Navegação entre telas
-- ✅ Swipe para ações rápidas
 - ✅ Filtros de tarefas
 - ✅ Tema claro/escuro
 - ✅ Configurações e limpeza de dados
@@ -77,43 +76,53 @@ Aqui estão as principais telas do ZapList em ação, demonstrando todas as func
 
 Interface principal com lista de tarefas, filtros e navegação intuitiva. Mostra as tarefas com imagens, localização e status visual.
 
-![Lista de Tarefas](https://i.imgur.com/0CxKM8E_d.webp?maxwidth=760&fidelity=grand)
+<div align="center">
+  <img src="https://i.imgur.com/0CxKM8E_d.webp?maxwidth=760&fidelity=grand" width="300" alt="Lista de Tarefas" />
+</div>
 
 ### **➕ Nova Tarefa**
 
 Tela para criação de novas tarefas com campos de título, descrição, captura de fotos e localização GPS.
 
-![Nova Tarefa](https://i.imgur.com/EzUuGIN_d.webp?maxwidth=760&fidelity=grand)
+<div align="center">
+  <img src="https://i.imgur.com/EzUuGIN_d.webp?maxwidth=760&fidelity=grand" width="300" alt="Nova Tarefa" />
+</div>
 
 ### **✏️ Editar Tarefa**
 
 Interface de edição com todos os campos preenchidos, permitindo alterar título, descrição, foto e localização.
 
-![Editar Tarefa](https://i.imgur.com/hU9pQjH_d.webp?maxwidth=760&fidelity=grand)
+<div align="center">
+  <img src="https://i.imgur.com/hU9pQjH_d.webp?maxwidth=760&fidelity=grand" width="300" alt="Editar Tarefa" />
+</div>
 
 ### **👁️ Detalhes da Tarefa**
 
 Visualização completa da tarefa com foto anexada, coordenadas GPS e informações detalhadas.
 
-![Detalhes da Tarefa](https://i.imgur.com/CHkiKMy_d.webp?maxwidth=760&fidelity=grand)
+<div align="center">
+  <img src="https://i.imgur.com/CHkiKMy_d.webp?maxwidth=760&fidelity=grand" width="300" alt="Detalhes da Tarefa" />
+</div>
 
 ### **⚙️ Configurações**
 
 Tela de configurações com opções de tema (claro/escuro), gerenciamento de dados e informações do app.
 
-![Configurações](https://i.imgur.com/TO34ctC_d.webp?maxwidth=760&fidelity=grand)
+<div align="center">
+  <img src="https://i.imgur.com/TO34ctC_d.webp?maxwidth=760&fidelity=grand" width="300" alt="Configurações" />
+</div>
 
 ## 🎯 Demonstração Visual
 
 <div align="center">
-  <img src="https://i.imgur.com/0CxKM8E_d.webp?maxwidth=760&fidelity=grand" width="200" alt="Lista de Tarefas" />
-  <img src="https://i.imgur.com/EzUuGIN_d.webp?maxwidth=760&fidelity=grand" width="200" alt="Nova Tarefa" />
-  <img src="https://i.imgur.com/hU9pQjH_d.webp?maxwidth=760&fidelity=grand" width="200" alt="Editar Tarefa" />
+  <img src="https://i.imgur.com/0CxKM8E_d.webp?maxwidth=760&fidelity=grand" width="180" alt="Lista de Tarefas" />
+  <img src="https://i.imgur.com/EzUuGIN_d.webp?maxwidth=760&fidelity=grand" width="180" alt="Nova Tarefa" />
+  <img src="https://i.imgur.com/hU9pQjH_d.webp?maxwidth=760&fidelity=grand" width="180" alt="Editar Tarefa" />
 </div>
 
 <div align="center">
-  <img src="https://i.imgur.com/CHkiKMy_d.webp?maxwidth=760&fidelity=grand" width="200" alt="Detalhes da Tarefa" />
-  <img src="https://i.imgur.com/TO34ctC_d.webp?maxwidth=760&fidelity=grand" width="200" alt="Configurações" />
+  <img src="https://i.imgur.com/CHkiKMy_d.webp?maxwidth=760&fidelity=grand" width="180" alt="Detalhes da Tarefa" />
+  <img src="https://i.imgur.com/TO34ctC_d.webp?maxwidth=760&fidelity=grand" width="180" alt="Configurações" />
 </div>
 
 ## 🛠️ Tecnologias e Bibliotecas Escolhidas
